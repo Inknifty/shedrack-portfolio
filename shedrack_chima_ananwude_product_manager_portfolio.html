@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shedrack Chima Ananwude — Product Manager</title>
+  <!-- Google Fonts: Plus Jakarta Sans (Bold Editorial Headers) & Inter (Clean Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            cream: '#F7F5F0',
+            creamCard: '#EFECE6',
+            obsidian: '#0F1115',
+            slateCard: '#171A21',
+            terracotta: '#E05A2B',
+            terracottaHover: '#C94A1E',
+            skyLight: '#F27043',
+            skyLightHover: '#FF8559',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Adaptive Theme Tokens */
+    :root {
+      --bg-primary: #F7F5F0;
+      --bg-secondary: #EFECE6;
+      --bg-card: #FFFFFF;
+      --text-primary: #0F1115;
+      --text-muted: #4B5563;
+      --border-color: rgba(15, 17, 21, 0.1);
+      --accent-color: #E05A2B;
+      --accent-hover: #C94A1E;
+      --accent-soft: rgba(224, 90, 43, 0.12);
+      --accent-border: rgba(224, 90, 43, 0.45);
+      --accent-glow: rgba(224, 90, 43, 0.22);
+      --spotlight-color: rgba(224, 90, 43, 0.1);
+    }
+
+    html.dark {
+      --bg-primary: #0F1115;
+      --bg-secondary: #14171F;
+      --bg-card: #171A21;
+      --text-primary: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --accent-color: #F27043;
+      --accent-hover: #FF8559;
+      --accent-soft: rgba(242, 112, 67, 0.16);
+      --accent-border: rgba(242, 112, 67, 0.48);
+      --accent-glow: rgba(242, 112, 67, 0.25);
+      --spotlight-color: rgba(242, 112, 67, 0.16);
+    }
+
+    /* Warm Terracotta / Orange Adaptive Accent Overrides */
+    .text-terracotta {
+      color: var(--accent-color) !important;
+    }
+    .group:hover .group-hover\:text-terracotta,
+    .hover\:text-terracotta:hover {
+      color: var(--accent-color) !important;
+    }
+    .bg-terracotta {
+      background-color: #E05A2B !important;
+    }
+    html.dark .bg-terracotta {
+      background-color: #F27043 !important;
+    }
+    .hover\:bg-terracotta:hover,
+    .hover\:bg-terracottaHover:hover {
+      background-color: #C94A1E !important;
+    }
+    html.dark .hover\:bg-terracotta:hover,
+    html.dark .hover\:bg-terracottaHover:hover {
+      background-color: #FF8559 !important;
+      color: #FFFFFF !important;
+    }
+    .bg-terracotta\/15 {
+      background-color: var(--accent-soft) !important;
+    }
+    .bg-terracotta\/20 {
+      background-color: rgba(242, 112, 67, 0.2) !important;
+    }
+    .hover\:border-terracotta:hover {
+      border-color: var(--accent-color) !important;
+    }
+    .selection\:bg-terracotta *::selection,
+    .selection\:bg-terracotta::selection {
+      background-color: #E05A2B !important;
+      color: #FFFFFF !important;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.35s ease, color 0.35s ease;
+      overflow-x: hidden;
+    }
+
+    .surface-primary {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    .surface-secondary {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    .surface-card {
+      background-color: var(--bg-card);
+      border-color: var(--border-color);
+      transition: background-color 0.35s ease, border-color 0.35s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    }
+
+    .text-adaptive-muted {
+      color: var(--text-muted);
+    }
+
+    .border-adaptive {
+      border-color: var(--border-color);
+    }
+
+    /* Cursor-Reactive Spotlight & Lift on Interactive Cards */
+    .interactive-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease, border-color 0.3s ease;
+    }
+
+    .interactive-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        var(--spotlight-color),
+        transparent 45%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .interactive-card:hover::before {
+      opacity: 1;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-border);
+      box-shadow: 0 20px 40px -15px rgba(224, 90, 43, 0.2);
+    }
+
+    html.dark .interactive-card:hover {
+      box-shadow: 0 20px 40px -15px rgba(242, 112, 67, 0.24);
+    }
+
+    /* Tactile Button Hover */
+    .btn-tactile {
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-tactile:hover {
+      transform: translateY(-2px);
+    }
+    .btn-tactile:active {
+      transform: translateY(0);
+    }
+
+    /* Progressive Scroll Reveal */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Timeline Node Illumination */
+    .timeline-node {
+      transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .timeline-step.is-active .timeline-node {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      transform: scale(1.25);
+      box-shadow: 0 0 0 6px var(--accent-glow);
+    }
+    .timeline-step {
+      opacity: 0.55;
+      transform: translateX(6px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .timeline-step.is-active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Custom Scrollbar for Modals */
+    .modal-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .modal-scroll::-webkit-scrollbar-thumb {
+      background-color: rgba(224, 90, 43, 0.5);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-terracotta selection:text-white">
+
+  <!-- Top Reading Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-transparent pointer-events-none">
+    <div id="scrollProgressBar" class="h-full bg-terracotta w-0 transition-all duration-75"></div>
+  </div>
+
+  <!-- =====================================================================
+       1. STICKY TOP NAVIGATION
+  ====================================================================== -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-[#F7F5F0]/85 dark:bg-[#0F1115]/85 border-b border-adaptive transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <!-- Brand Mark -->
+      <a href="#top" class="font-display font-extrabold text-xl sm:text-2xl tracking-tight flex items-center gap-1.5">
+        <span>Shedrack</span><span class="text-terracotta">.</span>
+      </a>
+
+      <!-- Desktop Anchor Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-bold">
+        <a href="#work" class="hover:text-terracotta transition-colors">Work</a>
+        <a href="#experience" class="hover:text-terracotta transition-colors">Experience</a>
+        <a href="#process" class="hover:text-terracotta transition-colors">Process</a>
+        <a href="#testimonials" class="hover:text-terracotta transition-colors">Endorsements</a>
+        <a href="#about" class="hover:text-terracotta transition-colors">About</a>
+        <a href="#writing" class="hover:text-terracotta transition-colors">Writing</a>
+      </nav>
+
+      <!-- Right Controls: Theme Toggle + CTA + Mobile Menu -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Light/Dark Mode Toggle -->
+        <button id="themeToggleBtn" aria-label="Toggle Dark Mode" class="p-2.5 rounded-full surface-card border border-adaptive hover:border-terracotta transition-colors" title="Switch Light / Dark Mode">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="sunIcon" class="w-4 h-4 hidden text-amber-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg id="moonIcon" class="w-4 h-4 text-obsidian" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact" class="btn-tactile hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-terracotta hover:bg-terracottaHover text-white text-xs sm:text-sm font-extrabold shadow-sm">
+          Get in Touch
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-full surface-card border border-adaptive">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-adaptive surface-primary px-5 py-4 space-y-3">
+      <a href="#work" class="block py-1.5 text-sm font-extrabold hover:text-terracotta">Work</a>
+      <a href="#experience" class="block py-1.5 text-sm font-extrabold hover:text-terracotta">Experience</a>
+      <a href="#process" class="block py-1.5 text-sm font-extrabold hover:text-terracotta">Process</a>
+      <a href="#testimonials" class="block py-1.5 text-sm font-extrabold hover:text-terracotta">Endorsements</a>
+      <a href="#about" class="block py-1.5 text-sm font-extrabold hover:text-terracotta">About</a>
+      <a href="#writing" class="block py-1.5 text-sm font-extrabold hover:text-terracotta">Writing</a>
+      <a href="#contact" class="block mt-2 text-center py-2.5 rounded-full bg-terracotta text-white text-sm font-extrabold">Get in Touch</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- =====================================================================
+         2. HERO SECTION & PROOF METRICS BAR
+    ====================================================================== -->
+    <section class="surface-primary pt-12 pb-20 sm:pt-20 sm:pb-28 border-b border-adaptive">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          <!-- Left Column: Copy & CTAs -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full surface-secondary border border-adaptive">
+              <span class="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
+              <span class="text-xs font-extrabold tracking-wider uppercase text-terracotta">
+                Product Manager · Platforms · Strategy · Execution
+              </span>
+            </div>
+
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08]">
+              From problem to <span class="text-terracotta">products that scale.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-adaptive-muted max-w-2xl leading-relaxed font-normal">
+              Building mission-critical platforms, internal tools, and high-velocity digital systems that turn operational friction into measurable product outcomes.
+            </p>
+
+            <!-- Competency Pills -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-bold surface-secondary border border-adaptive">Platforms</span>
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-bold surface-secondary border border-adaptive">Execution</span>
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-bold surface-secondary border border-adaptive">Project Management</span>
+              <span class="px-3.5 py-1.5 rounded-full text-xs font-bold surface-secondary border border-adaptive">Product Design</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-3">
+              <a href="#work" class="btn-tactile inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-obsidian dark:bg-terracotta text-white text-sm font-extrabold shadow-md hover:opacity-95">
+                <span>See the Work</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+
+              <a href="resume.pdf" download="Shedrack_Chima_Ananwude_CV.pdf" class="btn-tactile inline-flex items-center gap-2 px-7 py-3.5 rounded-full surface-card border border-adaptive hover:border-terracotta text-sm font-extrabold">
+                <svg class="w-4 h-4 text-terracotta" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>Download CV</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Portrait Card -->
+          <div class="lg:col-span-5">
+            <div class="interactive-card surface-card rounded-3xl border border-adaptive p-4 sm:p-5 shadow-xl max-w-md mx-auto">
+              <div class="relative rounded-2xl overflow-hidden aspect-[4/4.3] bg-[#171A21]">
+                <img
+                  id="heroPortraitImg"
+                  src="profile.jpg"
+                  onerror="this.onerror=null;this.src='https://placehold.co/600x650/171A21/F7F5F0?text=Shedrack+Ananwude';"
+                  alt="Shedrack Chima Ananwude"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                />
+
+                <!-- Bottom Info Strip -->
+                <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
+                  <p class="font-display font-extrabold text-base sm:text-lg leading-tight">Shedrack Chima Ananwude</p>
+                  <p class="text-xs font-medium text-gray-300 mt-0.5">Product Manager · Lagos, Nigeria</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proof Metrics Bar -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16 pt-12 border-t border-adaptive reveal-on-scroll">
+          <!-- Metric 1 -->
+          <div class="interactive-card surface-card p-6 sm:p-7 rounded-2xl border border-adaptive">
+            <p class="font-display font-extrabold text-3xl sm:text-4xl text-terracotta tracking-tight">₦500M+</p>
+            <h2 class="font-display font-extrabold text-base sm:text-lg mt-2">Fraud Exposure Mitigated</h2>
+            <p class="text-xs sm:text-sm text-adaptive-muted mt-1.5 leading-relaxed">
+              Mitigated over ₦500M in potential annual fraud losses via real-time monitoring & risk controls.
+            </p>
+          </div>
+
+          <!-- Metric 2 -->
+          <div class="interactive-card surface-card p-6 sm:p-7 rounded-2xl border border-adaptive">
+            <p class="font-display font-extrabold text-3xl sm:text-4xl text-terracotta tracking-tight">-20%</p>
+            <h2 class="font-display font-extrabold text-base sm:text-lg mt-2">False-Positive Alerts</h2>
+            <p class="text-xs sm:text-sm text-adaptive-muted mt-1.5 leading-relaxed">
+              Cut false-positive alerts by 20% while lifting high-risk detection by 15% and analyst efficiency by 25%.
+            </p>
+          </div>
+
+          <!-- Metric 3 (No specific product names as requested) -->
+          <div class="interactive-card surface-card p-6 sm:p-7 rounded-2xl border border-adaptive">
+            <p class="font-display font-extrabold text-3xl sm:text-4xl text-terracotta tracking-tight">+20%</p>
+            <h2 class="font-display font-extrabold text-base sm:text-lg mt-2">User Task Completion Lift</h2>
+            <p class="text-xs sm:text-sm text-adaptive-muted mt-1.5 leading-relaxed">
+              Delivered 20% higher task completion & 15% fewer post-launch bugs across digital wellness & venture platforms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. SELECTED PRODUCT WORK & INTERACTIVE CASE STUDIES
+    ====================================================================== -->
+    <section id="work" class="bg-obsidian text-white py-20 sm:py-28 border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <!-- Section Header & Filter Tabs -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-on-scroll">
+          <div class="max-w-2xl">
+            <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta mb-3">01 — Selected Product Work</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white">
+              Systems shipped & interactive case studies
+            </h2>
+            <p class="text-sm sm:text-base text-gray-400 mt-3 leading-relaxed">
+              Click any project card to explore the end-to-end product breakdown from problem diagnosis through development roadmap and measurable results.
+            </p>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="flex flex-wrap gap-2" id="projectFilters">
+            <button data-filter="all" class="filter-btn active px-4 py-2 rounded-full text-xs font-extrabold bg-terracotta text-white transition-colors">
+              All Work (8)
+            </button>
+            <button data-filter="fintech" class="filter-btn px-4 py-2 rounded-full text-xs font-extrabold bg-white/10 text-gray-300 hover:bg-white/20 transition-colors">
+              Fintech & Risk (6)
+            </button>
+            <button data-filter="venture" class="filter-btn px-4 py-2 rounded-full text-xs font-extrabold bg-white/10 text-gray-300 hover:bg-white/20 transition-colors">
+              Wellness & Venture (2)
+            </button>
+          </div>
+        </div>
+
+        <!-- 8 Project Cards Grid -->
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 reveal-on-scroll">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. WORK EXPERIENCE (PROGRESSIVE SCROLL TIMELINE + CLICKABLE CARDS)
+    ====================================================================== -->
+    <section id="experience" class="surface-primary py-20 sm:py-28 border-b border-adaptive">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl mb-14 reveal-on-scroll">
+          <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta mb-3">02 — Career Progression</p>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+            Work Experience
+          </h2>
+          <p class="text-sm sm:text-base text-adaptive-muted mt-3 leading-relaxed">
+            A track record of shipping high-impact digital products, scaling internal platforms, and driving cross-functional execution across fintech, SaaS, and digital banking.
+          </p>
+        </div>
+
+        <!-- PART A: Moniepoint Group Scroll-Linked Vertical Timeline -->
+        <div class="mb-20">
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-8 pb-4 border-b border-adaptive">
+            <div>
+              <h3 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Moniepoint Group</h3>
+              <p class="text-xs sm:text-sm font-bold text-terracotta mt-0.5">Lagos, Nigeria · 2 yrs 7 mos · Internal Career Progression</p>
+            </div>
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-extrabold surface-secondary border border-adaptive">
+              KYC Operations → PM Intern → Full-Time PM
+            </span>
+          </div>
+
+          <div class="relative pl-7 sm:pl-10 space-y-12" id="moniepointTimeline">
+            <!-- Base Vertical Track -->
+            <div class="absolute left-2.5 sm:left-3.5 top-2 bottom-2 w-0.5 bg-gray-300 dark:bg-white/15"></div>
+            <!-- Scroll-Illuminated Progress Line -->
+            <div id="timelineProgressFill" class="absolute left-2.5 sm:left-3.5 top-2 w-0.5 bg-terracotta h-0 transition-all duration-150"></div>
+
+            <!-- Role 1 -->
+            <div class="timeline-step relative">
+              <div class="timeline-node absolute -left-[23px] sm:-left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-cream dark:bg-obsidian border-2 border-gray-400"></div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="font-display font-extrabold text-xl sm:text-2xl">Product Manager – Fraud</h4>
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta">Full-time · Jan 2026 – Present</span>
+              </div>
+              <ul class="mt-4 space-y-2.5 text-sm sm:text-base text-adaptive-muted list-disc pl-5 leading-relaxed">
+                <li>Spearheaded product strategy and end-to-end execution for core fraud detection and case management platforms, boosting the system performance by 30%.</li>
+                <li>Architected and launched standardized account restriction and customer resolution workflows (Lien, Post-No-Debit, Post-No-Credit) with unified reason codes, enhancing user experiences and reducing resolution time by 40%.</li>
+                <li>Led cross-functional requirements and phased rollout strategies for Request for Information (RFI) SDK integrations across MFB, Monieworld, Monnify, and internal operational dashboards, expediting cross-platform data syncing by 35%.</li>
+                <li>Initiated and led baseline benchmarking studies comparing key operational metrics and internal case management resolution speeds, designing and driving workflow automations that directly boosted analyst resolution efficiency by 25%.</li>
+              </ul>
+            </div>
+
+            <!-- Role 2 -->
+            <div class="timeline-step relative">
+              <div class="timeline-node absolute -left-[23px] sm:-left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-cream dark:bg-obsidian border-2 border-gray-400"></div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="font-display font-extrabold text-xl sm:text-2xl">Product Manager – Fraud Prevention & Compliance Tools</h4>
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold surface-secondary border border-adaptive">Internship · Apr 2025 – Dec 2025</span>
+              </div>
+              <ul class="mt-4 space-y-2.5 text-sm sm:text-base text-adaptive-muted list-disc pl-5 leading-relaxed">
+                <li>Led the development and optimization of internal fraud prevention tools (Transaction Monitoring, Customer Screening, and Customer Risk Assessment), resulting in a 20% reduction in false positives and a 15% increase in high-risk customer identification.</li>
+                <li>Oversaw Transaction Monitoring protocols, mitigating over ₦500 million in potential fraud losses annually by identifying and addressing high-risk activities in real time.</li>
+                <li>Collaborated with engineering and compliance teams to refine detection logic, improving screening tool accuracy and achieving 99.5% compliance with regulatory standards.</li>
+                <li>Launched an AI-driven investigation feature automating risk assessments, increasing analyst efficiency by 25% and accelerating mitigation for high-risk cases.</li>
+              </ul>
+            </div>
+
+            <!-- Role 3 -->
+            <div class="timeline-step relative">
+              <div class="timeline-node absolute -left-[23px] sm:-left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-cream dark:bg-obsidian border-2 border-gray-400"></div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="font-display font-extrabold text-xl sm:text-2xl">KYC Officer – Onboarding & Retention</h4>
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold surface-secondary border border-adaptive">Full-time · May 2024 – Apr 2025</span>
+              </div>
+              <ul class="mt-4 space-y-2.5 text-sm sm:text-base text-adaptive-muted list-disc pl-5 leading-relaxed">
+                <li>Reviewed and assessed new retail and business client relationships, maintaining 100% compliance with regulatory KYC requirements while reducing initial compliance review time by 70%.</li>
+                <li>Conducted high-priority due diligence and critical risk assessments for management, contributing to an 80% decrease in onboarding financial crime exposure.</li>
+                <li>Collaborated across internal teams to streamline documentation management, improving operational efficiency and reducing KYC reporting errors by 75%.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART B: Additional Cross-Functional Roles (Clickable "See More" Cards) -->
+        <div class="reveal-on-scroll">
+          <div class="mb-8">
+            <h3 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight">Additional Cross-Functional Experience</h3>
+            <p class="text-xs sm:text-sm text-adaptive-muted mt-1">Select <strong class="text-terracotta">See More</strong> on any role card to inspect full responsibilities and measurable outcomes.</p>
+          </div>
+
+          <div id="otherExperienceGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. HOW I WORK (4-STEP PRODUCT EXECUTION FRAMEWORK)
+    ====================================================================== -->
+    <section id="process" class="surface-secondary py-20 sm:py-28 border-b border-adaptive">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl mb-14 reveal-on-scroll">
+          <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta mb-3">03 — Execution Playbook</p>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+            How I Work
+          </h2>
+          <p class="text-sm sm:text-base text-adaptive-muted mt-3 leading-relaxed">
+            A structured 4-step product execution framework built to eliminate ambiguity, align engineering and operations, and ship measurable outcomes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal-on-scroll">
+          <!-- 01 Diagnose -->
+          <div class="interactive-card surface-card p-7 rounded-3xl border border-adaptive flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta mb-4">Step 01</span>
+              <h3 class="font-display font-extrabold text-2xl mb-3">01 Diagnose</h3>
+              <p class="text-sm text-adaptive-muted leading-relaxed">
+                Align on product vision and business goals, define the core problem statement, conduct SQL funnel & user discovery research, and establish clear success goals before touching solutions.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-adaptive text-xs font-bold text-terracotta">
+              Vision · Problem Definition · Goal Setting
+            </div>
+          </div>
+
+          <!-- 02 Specify -->
+          <div class="interactive-card surface-card p-7 rounded-3xl border border-adaptive flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta mb-4">Step 02</span>
+              <h3 class="font-display font-extrabold text-2xl mb-3">02 Specify</h3>
+              <p class="text-sm text-adaptive-muted leading-relaxed">
+                Lead structured ideation and scoping, translate edge cases and state machines into unambiguous PRDs and prototypes, and prioritize high-leverage initiatives by impact and feasibility.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-adaptive text-xs font-bold text-terracotta">
+              Ideation · Scoping · PRDs & Prioritization
+            </div>
+          </div>
+
+          <!-- 03 Deliver -->
+          <div class="interactive-card surface-card p-7 rounded-3xl border border-adaptive flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta mb-4">Step 03</span>
+              <h3 class="font-display font-extrabold text-2xl mb-3">03 Deliver</h3>
+              <p class="text-sm text-adaptive-muted leading-relaxed">
+                Partner tightly with engineering, design, and frontline operations through agile sprint planning, backlog refinement, staging UAT, and phased multi-tenant rollouts.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-adaptive text-xs font-bold text-terracotta">
+              Delivery · Cross-Functional Building
+            </div>
+          </div>
+
+          <!-- 04 Measure & Tune -->
+          <div class="interactive-card surface-card p-7 rounded-3xl border border-adaptive flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta mb-4">Step 04</span>
+              <h3 class="font-display font-extrabold text-2xl mb-3">04 Measure & Tune</h3>
+              <p class="text-sm text-adaptive-muted leading-relaxed">
+                Track post-launch telemetry against North Star and guardrail metrics, run controlled experiments, debug edge-case bottlenecks, and iterate continuously.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-adaptive text-xs font-bold text-terracotta">
+              Analytics · Experimentation · Debugging
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         6. TESTIMONIALS / ENDORSEMENTS (ONLY VICTOR, TITUS & BUKOLA)
+    ====================================================================== -->
+    <section id="testimonials" class="bg-obsidian text-white py-20 sm:py-28 border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-2xl mb-14 reveal-on-scroll">
+          <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta mb-3">04 — Endorsements</p>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white">
+            Trusted by design and product partners
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7 reveal-on-scroll">
+          <!-- Quote 1: Victor Adedini -->
+          <div class="interactive-card p-8 rounded-3xl bg-slateCard border border-white/10 flex flex-col justify-between">
+            <p class="text-sm sm:text-base text-gray-200 leading-relaxed">
+              “Shedrack is a collaborative, user-focused PM who makes design alignment effortless. When working on RFI user flows and case management workflows, he consistently brings clear prototypes and structured user insights to the table early. That upfront clarity eliminates guesswork, keeps design reviews focused, and ensures we ship intuitive experiences that meet both user and regulatory needs.”
+            </p>
+            <div class="mt-8 pt-5 border-t border-white/10 flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-full bg-terracotta/20 text-terracotta font-display font-extrabold text-sm flex items-center justify-center shrink-0">
+                VA
+              </div>
+              <div>
+                <h3 class="font-display font-extrabold text-base text-white">Victor Adedini</h3>
+                <p class="text-xs font-semibold text-gray-400">Product Designer</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote 2: Titus Adenugba -->
+          <div class="interactive-card p-8 rounded-3xl bg-slateCard border border-white/10 flex flex-col justify-between">
+            <p class="text-sm sm:text-base text-gray-200 leading-relaxed">
+              “Shedrack brings a rare combination of user empathy, analytical rigor, and execution discipline to Product Management. From conducting structured user interviews and synthesizing actionable experience maps to driving NFIU-compliant AML workflows and cross-team RFI alignment, he consistently connects customer pain points to practical, scalable product solutions.”
+            </p>
+            <div class="mt-8 pt-5 border-t border-white/10 flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-full bg-terracotta/20 text-terracotta font-display font-extrabold text-sm flex items-center justify-center shrink-0">
+                TA
+              </div>
+              <div>
+                <h3 class="font-display font-extrabold text-base text-white">Titus Adenugba</h3>
+                <p class="text-xs font-semibold text-gray-400">Product Manager</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote 3: Bukola Bankole -->
+          <div class="interactive-card p-8 rounded-3xl bg-slateCard border border-white/10 flex flex-col justify-between">
+            <p class="text-sm sm:text-base text-gray-200 leading-relaxed">
+              “Working alongside Shedrack demonstrates how impactful structured product discovery and operational clarity can be. He consistently translates complex regulatory and user requirements into well-scoped solutions, aligns cross-functional teams effortlessly, and keeps execution focused on measurable product outcomes.”
+            </p>
+            <div class="mt-8 pt-5 border-t border-white/10 flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-full bg-terracotta/20 text-terracotta font-display font-extrabold text-sm flex items-center justify-center shrink-0">
+                BB
+              </div>
+              <div>
+                <h3 class="font-display font-extrabold text-base text-white">Bukola Bankole</h3>
+                <p class="text-xs font-semibold text-gray-400">Product Manager</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         7. ABOUT & BACKGROUND ("FROM CUSTOMER SERVICE TO PRODUCT MANAGER")
+    ====================================================================== -->
+    <section id="about" class="surface-primary py-20 sm:py-28 border-b border-adaptive">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start reveal-on-scroll">
+          <div class="lg:col-span-7 space-y-5">
+            <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta">05 — Background</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+              From Customer Service to Product Manager
+            </h2>
+            <p class="text-base text-adaptive-muted leading-relaxed">
+              My path into product management didn’t start in a strategy deck—it started on the front lines of customer service and KYC compliance operations. Having personally reviewed thousands of retail and business accounts, untangled onboarding bottlenecks, and audited complex merchant documentation, I developed an intuitive grasp of where operations break down and where customers feel friction.
+            </p>
+            <p class="text-base text-adaptive-muted leading-relaxed">
+              In April 2025, I transitioned into product management at Moniepoint, progressing from Product Manager Intern to full-time Product Manager. Today, I own internal fraud prevention platforms, Transaction Monitoring rules, Customer Screening engines, Customer Risk Assessment models, multi-tenant <strong class="text-current font-bold">RFI SDK</strong> integrations, and <strong class="text-current font-bold">LASS (Loom AI Assistant)</strong>—an AI investigation assistant that helps analysts investigate customers faster and protects over ₦500M in annual exposure without introducing friction for legitimate users.
+            </p>
+            <p class="text-base text-adaptive-muted leading-relaxed">
+              Alongside fintech infrastructure, my remote work at Zarttech designing and shipping consumer and venture platforms like <strong class="text-current font-bold">Heilen</strong> and <strong class="text-current font-bold">15Wins Venture</strong>—combined with mentoring 150+ aspiring designers at Side Hustle—grounded my approach in deep user empathy, rapid prototyping, and disciplined agile execution.
+            </p>
+          </div>
+
+          <!-- Education & Certifications Card -->
+          <div class="lg:col-span-5">
+            <div class="surface-card p-7 sm:p-8 rounded-3xl border border-adaptive space-y-6 shadow-sm">
+              <div>
+                <p class="text-xs font-extrabold uppercase tracking-wider text-terracotta mb-2">Education</p>
+                <h3 class="font-display font-extrabold text-lg">Nnamdi Azikiwe University, Awka</h3>
+                <p class="text-sm text-adaptive-muted mt-0.5">Bachelor of Science in Education (B.Sc.Ed) — Science Education in Chemistry</p>
+              </div>
+
+              <div class="border-t border-adaptive pt-5">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-terracotta mb-3">Certifications & Training</p>
+                <ul class="space-y-2.5 text-sm font-semibold">
+                  <li class="flex items-center justify-between">
+                    <span>Google Project Management</span>
+                    <span class="text-xs text-adaptive-muted">2025</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Google User Experience Design</span>
+                    <span class="text-xs text-adaptive-muted">2023</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Side Hustle Graphic Design</span>
+                    <span class="text-xs text-adaptive-muted">2023</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Side Hustle Product Design</span>
+                    <span class="text-xs text-adaptive-muted">2022</span>
+                  </li>
+                  <li class="flex items-center justify-between">
+                    <span>Jobberman Soft Skills</span>
+                    <span class="text-xs text-adaptive-muted">2021</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         8. PRODUCT WRITING & PUBLICATIONS (HASHNODE PROFILE ONLY)
+    ====================================================================== -->
+    <section id="writing" class="surface-secondary py-20 sm:py-28 border-b border-adaptive">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 reveal-on-scroll">
+          <div>
+            <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta mb-3">06 — Product Writing</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+              Publications & Notes
+            </h2>
+          </div>
+          <a href="https://hashnode.com/@SHAYDEE1" target="_blank" rel="noopener noreferrer" class="btn-tactile inline-flex items-center gap-2 px-5 py-2.5 rounded-full surface-card border border-adaptive hover:border-terracotta text-xs sm:text-sm font-extrabold">
+            <span>Visit Hashnode Profile (@SHAYDEE1)</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div class="max-w-3xl reveal-on-scroll">
+          <a href="https://hashnode.com/@SHAYDEE1" target="_blank" rel="noopener noreferrer" class="interactive-card surface-card block p-7 sm:p-9 rounded-3xl border border-adaptive group">
+            <div class="flex flex-wrap items-center gap-2.5 text-xs font-extrabold text-terracotta mb-3">
+              <span>4 min read</span>
+              <span>·</span>
+              <span>linkedin.com</span>
+              <span>·</span>
+              <span>Feb 13, 2024</span>
+            </div>
+            <h3 class="font-display font-extrabold text-xl sm:text-2xl group-hover:text-terracotta transition-colors">
+              Exploring a Career in UX Design: Crafting Experiences, Shaping Futures
+            </h3>
+            <p class="text-sm sm:text-base text-adaptive-muted mt-3 leading-relaxed">
+              Reflections on transitioning into user-centered product thinking, designing intuitive digital interfaces, and bridging user empathy with practical business execution.
+            </p>
+            <div class="mt-6 inline-flex items-center gap-1.5 text-xs font-extrabold text-terracotta">
+              <span>Read on Hashnode (@SHAYDEE1)</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       9. FOOTER & CONTACT CTA (PRIVACY-CLEAN: COPY EMAIL BUTTON ONLY)
+  ====================================================================== -->
+  <footer id="contact" class="bg-obsidian text-white pt-20 pb-14">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-3xl mx-auto text-center space-y-6 reveal-on-scroll">
+        <p class="text-xs font-extrabold tracking-widest uppercase text-terracotta">07 — Contact</p>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight text-white leading-tight">
+          Building something consequential? Let’s talk.
+        </h2>
+        <p class="text-base text-gray-400 max-w-xl mx-auto leading-relaxed">
+          Whether you are scaling payment rails, untangling complex internal operations, or launching a 0→1 digital product, I’d love to connect.
+        </p>
+
+        <!-- Direct Copy Email Button Only (No phone number, no raw email text) -->
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <button id="copyEmailBtn" class="btn-tactile inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-terracotta hover:bg-terracottaHover text-white text-sm font-extrabold shadow-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+            <span id="copyEmailLabel">Copy Email</span>
+          </button>
+        </div>
+
+        <!-- Secondary Social Links -->
+        <div class="pt-6 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 font-semibold">
+          <a href="https://www.linkedin.com/in/shedrack-ananwude" target="_blank" rel="noopener noreferrer" class="hover:text-skyLight transition-colors">LinkedIn ↗</a>
+          <span>•</span>
+          <a href="https://hashnode.com/@SHAYDEE1" target="_blank" rel="noopener noreferrer" class="hover:text-skyLight transition-colors">Hashnode ↗</a>
+          <span>•</span>
+          <a href="https://linktr.ee/InkNifty" target="_blank" rel="noopener noreferrer" class="hover:text-skyLight transition-colors">Linktree ↗</a>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright -->
+      <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-medium">
+        <p>© 2026 Shedrack Chima Ananwude. Built in Lagos, Nigeria.</p>
+        <p>Product Management · Platforms · Strategy · Execution</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODAL 1: 6-PART INTERACTIVE CASE STUDY MODAL
+  ====================================================================== -->
+  <div id="caseStudyModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
+    <div class="surface-card border border-adaptive rounded-3xl max-w-3xl w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Top Bar -->
+      <div class="px-6 py-4 border-b border-adaptive flex items-center justify-between gap-4">
+        <span id="modalCategoryTag" class="px-3 py-1 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta">Case Study</span>
+        <button id="closeCaseStudyModal" aria-label="Close Case Study" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Scrollable Content -->
+      <div class="p-6 sm:p-8 overflow-y-auto modal-scroll space-y-6">
+        <div>
+          <h3 id="modalTitle" class="font-display font-extrabold text-2xl sm:text-3xl leading-tight">Project Title</h3>
+          <p id="modalSubtitle" class="text-sm font-bold text-terracotta mt-1">Company & Role Context</p>
+        </div>
+
+        <div id="modalCoverWrap" class="rounded-2xl overflow-hidden aspect-[16/8] bg-obsidian">
+          <img id="modalCoverImg" src="" alt="Project Cover" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- 6-Part Workflow Sections -->
+        <div class="grid grid-cols-1 gap-5">
+          <div class="p-5 rounded-2xl surface-secondary border border-adaptive">
+            <h4 class="font-display font-extrabold text-sm uppercase tracking-wider text-terracotta mb-2">1. Overview</h4>
+            <p id="modalOverview" class="text-sm text-adaptive-muted leading-relaxed"></p>
+          </div>
+
+          <div class="p-5 rounded-2xl surface-secondary border border-adaptive">
+            <h4 class="font-display font-extrabold text-sm uppercase tracking-wider text-terracotta mb-2">2. Problem</h4>
+            <p id="modalProblem" class="text-sm text-adaptive-muted leading-relaxed"></p>
+          </div>
+
+          <div class="p-5 rounded-2xl surface-secondary border border-adaptive">
+            <h4 class="font-display font-extrabold text-sm uppercase tracking-wider text-terracotta mb-2">3. Purpose & Goals</h4>
+            <p id="modalGoals" class="text-sm text-adaptive-muted leading-relaxed"></p>
+          </div>
+
+          <div class="p-5 rounded-2xl surface-secondary border border-adaptive">
+            <h4 class="font-display font-extrabold text-sm uppercase tracking-wider text-terracotta mb-2">4. Impact & Result</h4>
+            <p id="modalImpact" class="text-sm text-adaptive-muted leading-relaxed"></p>
+          </div>
+
+          <div class="p-5 rounded-2xl surface-secondary border border-adaptive">
+            <h4 class="font-display font-extrabold text-sm uppercase tracking-wider text-terracotta mb-2">5. Development Roadmap</h4>
+            <p id="modalRoadmap" class="text-sm text-adaptive-muted leading-relaxed"></p>
+          </div>
+
+          <div class="p-5 rounded-2xl surface-secondary border border-adaptive">
+            <h4 class="font-display font-extrabold text-sm uppercase tracking-wider text-terracotta mb-2">6. Conclusion & Learning</h4>
+            <p id="modalConclusion" class="text-sm text-adaptive-muted leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 2: CROSS-FUNCTIONAL EXPERIENCE RESPONSIBILITIES MODAL
+  ====================================================================== -->
+  <div id="experienceModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
+    <div class="surface-card border border-adaptive rounded-3xl max-w-xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-adaptive flex items-center justify-between">
+        <span id="expModalPeriod" class="text-xs font-extrabold text-terracotta uppercase tracking-wider">Period</span>
+        <button id="closeExperienceModal" aria-label="Close Experience Details" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-6 sm:p-8 overflow-y-auto modal-scroll space-y-4">
+        <div>
+          <h3 id="expModalRole" class="font-display font-extrabold text-2xl">Role Title</h3>
+          <p id="expModalCompany" class="text-sm font-bold text-adaptive-muted mt-1">Company & Type</p>
+        </div>
+        <div class="inline-block px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-terracotta/15 text-terracotta" id="expModalMetric">
+          Key Highlight
+        </div>
+        <ul id="expModalBullets" class="space-y-3 text-sm text-adaptive-muted list-disc pl-5 leading-relaxed pt-2">
+          <!-- Populated dynamically -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 px-5 py-3.5 rounded-2xl bg-obsidian dark:bg-white text-white dark:text-obsidian text-xs sm:text-sm font-extrabold shadow-2xl border border-white/10">
+    Notification message
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT: DATA, INTERACTIVITY, SCROLL TIMELINE & MODALS
+  ====================================================================== -->
+  <script>
+    // 1. 8 Product Case Studies Dataset (Detailed PRD-Backed Case Studies)
+    const caseStudies = [
+      {
+        id: 'transaction-monitoring',
+        category: 'fintech',
+        categoryLabel: 'Fintech & Risk',
+        title: 'Transaction Monitoring & AML Case Management Sub-Module',
+        subtitle: 'Moniepoint Group · Product Manager',
+        coverFile: 'cover-1.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=Transaction+Monitoring+Engine',
+        metricBadge: '₦500M+ Exposure Mitigated · 72h SLA',
+        summary: 'Architected a 3-tier Customer → Case Group (OTO/OTM/MTO) → Counter-Party monitoring platform with 72-hour CBN SLA tracking and automated STR workflows.',
+        overview: 'Delivered a dedicated AML & Transaction Monitoring sub-module inside Loom Case Management (LCM), migrating compliance operations away from read-only Metabase dashboards to an auditable, customer-centric investigation workspace. Engineered a 3-level alert hierarchy—Customer Level (top-level entity consolidating all sub-accounts), Case Group Level (classified into One-to-One, One-to-Many, and Many-to-One patterns), and Counter-Party Level—alongside a 24-hour post-resolution alert consolidation window and strict role-based module isolation.',
+        problem: 'Under the legacy Metabase workflow, alerts were fragmented into isolated single-transaction rows across separate sub-accounts. Analysts lacked a unified customer view, frequently sent duplicate Request for Information (RFI) messages to the same merchant, had no visibility into cross-module Fraud alerts, and could not track the mandatory 72-hour Central Bank of Nigeria (CBN) regulatory SLA or generate structured goAML Suspicious Transaction Reports (STR/SAR).',
+        goals: 'Consolidate all sub-account violations under a single Customer ID, replace single-transaction alert drawers with a Counter-Party Drawer displaying up to 100 grouped transactions, enforce 72-hour regulatory SLA timers, introduce cascading bulk resolution (Customer → Sub-Account → Counter-Party), and standardize 16 False Positive and 14 True Positive resolution taxonomies.',
+        impact: 'Mitigated over ₦500 million in potential annual fraud and money-laundering exposure, reduced false-positive alert noise by 20%, lifted high-risk customer identification by 15%, cut duplicate customer RFIs by ≥50%, accelerated p90 case resolution time by ≥30%, and achieved 99.5% regulatory audit readiness across 10+ live AML rules.',
+        roadmap: 'Phase 1: Core MFB data pipeline integration (is_aml=true), RBAC permission boundaries (aml_analyst, aml_supervisor, compliance_lead, LEA), and 3-table dashboard architecture (Customer, Case Group, Alert) → Phase 2: Upgraded Counter-Party Drawer, Cross-Module Flagging badges, 24-hour alert consolidation logic, and manual In-App/Email RFI workflows → Phase 3: Multi-level cascading resolution forms, immutable audit trails, PDF/CSV regulatory exports, and multi-tenant readiness for Monnify and Monieworld.',
+        conclusion: 'Restructuring alerts around the Customer and Counter-Party relationship rather than isolated single transactions fundamentally transforms analyst speed, eliminates duplicate customer outreach, and ensures airtight CBN and NFIU audit compliance.'
+      },
+      {
+        id: 'cra-scoring',
+        category: 'fintech',
+        categoryLabel: 'Fintech & Risk',
+        title: 'Loom Customer Risk Assessment (CRA) System',
+        subtitle: 'Moniepoint Group · Product Manager',
+        coverFile: 'cover-2.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=Customer+Risk+Assessment+Model',
+        metricBadge: '+15% High-Risk Detection · <2s SLA',
+        summary: 'Built a real-time risk classification and dynamic transaction limit engine with self-serve limit upgrade advice and Enhanced Due Diligence (EDD) tracking.',
+        overview: 'Architected the Loom Customer Risk Assessment (CRA) platform to dynamically evaluate personal and registered business customers during onboarding and throughout their lifecycle. The system ingests KYC tier, BVN/NIN verification, occupation, business registration age, DNFBP status, physical address verification, and 60-day average daily inflow to classify risk tiers and assign granular single/daily debit and credit limit classes.',
+        problem: 'Static onboarding limit tiers treated low-risk verified businesses the same as high-risk profiles, creating unnecessary friction for legitimate merchants trying to scale while leaving high-risk accounts under-monitored. Furthermore, customers and Business Relationship Managers (BRMs) had no clear self-serve visibility into what documentation or verification steps were needed to unlock higher limit classes.',
+        goals: 'Deliver sub-2-second real-time risk classification APIs (/classify-risk) capable of handling 10,000 concurrent requests at 99.9% uptime, automate dynamic limit assignment, launch a transparent Limit Upgrade Advice engine (/limit-upgrade-advice), and integrate Enhanced Due Diligence (EDD) case creation directly into Loom Case Management.',
+        impact: 'Lifted high-risk customer detection by 15%, reduced false-positive risk escalations by 20%, maintained sub-2-second normal response latency (<5s peak) at 99.9% uptime, and sustained 99.5% compliance with Nigerian financial regulations.',
+        roadmap: 'Phase 1: Core Risk Classification & Limit Assignment APIs integrated with Mobile App and Onboarding services → Phase 2: Self-serve Limit Upgrade Request API (/request-limit-upgrade) with automated Loom case routing for analyst approval → Phase 3: Limit Upgrade Advice engine surfacing exact qualification steps, plus full EDD initiation, document storage, and analyst audit dashboards.',
+        conclusion: 'Combining dynamic risk-based limit assignment with actionable "Limit Upgrade Advice" turns compliance from a black-box blocker into a transparent growth pathway for legitimate merchants while gating high-risk profiles behind structured EDD.'
+      },
+      {
+        id: 'account-restrictions',
+        category: 'fintech',
+        categoryLabel: 'Fintech & Platforms',
+        title: 'Account Restriction & Customer Status Governance Rails',
+        subtitle: 'Moniepoint Group · Product Manager',
+        coverFile: 'cover-3.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=Account+Restriction+%26+Status+Rails',
+        metricBadge: 'Zero Tip-Off · Team-Owned Blacklists',
+        summary: 'Standardized single/bulk Lien, PND, and PNC enforcement APIs alongside a silent UNDER_INVESTIGATION status and team-owned per-client blacklists.',
+        overview: 'Led the end-to-end redesign of Core Banking (CBA) Restriction and Customer Status APIs alongside Loom management interfaces for Lien, Post-No-Debit (PND), Post-No-Credit (PNC), and customer lifecycle states (ACTIVE, UNDER_INVESTIGATION, BLACKLISTED, INVALIDATED). Introduced dual-layer narrations (customer-facing vs. internal metadata), ledger account lookup, automated expiry removal, RFI linkage (rfiId), and per-team blacklist isolation.',
+        problem: 'Unstructured free-text restriction narrations exposed sensitive internal investigation details to customers—causing customer complaints, tipping-off risks, and regulatory audit gaps. Meanwhile, PND/PNC lacked internal narration metadata and expiry automation, and global single-flag blacklists allowed one operational team lifting a flag to inadvertently strip another team’s fraud protection.',
+        goals: 'Introduce a silent UNDER_INVESTIGATION status that blocks high-risk actions (new account pairing, BVN/NIN updates, new device additions, account merges) with generic error messages to prevent tipping off suspects, enforce independent team-owned blacklist entries, and govern single/bulk restriction placement with auto-expiry and RFI linking.',
+        impact: 'Eliminated cross-team blacklist lift collisions, cut restriction resolution turnaround time by 40% via automated RFI linkage and standardized reason-code templates, automated cleanup of expired restrictions ("Expired (Auto-Removed)"), and launched real-time analytics dashboards across Fraud, AML, Risk, LEA, and Customer Support teams.',
+        roadmap: 'Phase 1: CBA Restriction & Customer Status API schema overhaul (internalNarration, expiryDate, rfiId, ledgerAccount, UNDER_INVESTIGATION state machine) → Phase 2: Single and bulk placement/update/removal flows on Loom with automatic current-status grouping and validation previews → Phase 3: Admin Reason Code Template management and interactive stats dashboards (status bar, team pie, type & initiation donut charts).',
+        conclusion: 'Strict separation between customer-facing explanations and internal investigation metadata—paired with team-scoped ownership—protects ongoing investigations from tip-offs while creating clean cross-team governance.'
+      },
+      {
+        id: 'rfi-sdk',
+        category: 'fintech',
+        categoryLabel: 'Fintech & Platforms',
+        title: 'RFI SDK — Multi-Tenant Request for Information Platform',
+        subtitle: 'Moniepoint Group · Product Manager',
+        coverFile: 'cover-8.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=Multi-Tenant+RFI+SDK',
+        metricBadge: 'P90 Resolution 16h → ≤8h · 85%+ Completion',
+        summary: 'Built a no-code, multi-tenant compliance communication SDK uniting Email, In-App, PWA, POS, MonieDesk, and Web-App channels via Dialogue Service.',
+        overview: 'Architected the RFI SDK—a configuration-driven, multi-tenant compliance communication engine inside Loom powered by the Dialogue Service. Built on one shared codebase across MFB, Monieworld, Monnify, and BRM Dashboards, it orchestrates automated and manual Requests for Information across 6 channels (Email, In-App Mobile, PWA Dashboard, POS Terminal, MonieDesk L1 Support, and Standalone Web-App) with a 12-state lifecycle and customer-facing Verification Tracker.',
+        problem: 'Compliance analysts previously relied on personal Gmail inboxes, phone calls, and WhatsApp disconnected from Loom—leaving zero audit trails, triggering duplicate outreach, and providing no visibility to L1 support or customers. Worse, three of Moniepoint’s five business units (Monieworld, Monnify, and the BRM Dashboard) had no structured RFI capability at all.',
+        goals: 'Cut P90 case resolution time from 15–17 hours to ≤8 hours, slash manual RFI workload from 100% to ≤35%, reach 85%+ RFI completion rates, deliver 95%+ notifications within tenant SLA windows, achieve 4.0+/5.0 customer CSAT, and make every tenant/domain configuration live within 1 second with zero code deployments.',
+        impact: 'Unified all 6 communication channels into a single chronological Loom thread with <1-second reply notifications, universal email-to-case mapping (matching orphaned replies via BVN, account number, or name), non-case RFI initiation, automated reminders, and real-time LASS AI response scoring.',
+        roadmap: 'Phase 1: Multi-tenant Email RFI, Universal Recipient Mapping & LASS AI templates → Phase 2: In-App Mobile deep-linked push notifications, dismissible banners, bot document upload & Verification Tracker → Phase 3: BRM/Merchant PWA Dashboard (40-min RBAC timer), POS Terminal pre-debit compliance checks, MonieDesk L1 sync & standalone Web-App portal.',
+        conclusion: 'Designing a hierarchical, configuration-first SDK (Loom → Tenant → Module → Domain → Workflow → Feature) lets new business units launch compliant, multi-channel customer verification flows in seconds without engineering bottlenecks.'
+      },
+      {
+        id: 'lass-ai-assistant',
+        category: 'fintech',
+        categoryLabel: 'AI & Internal Tools',
+        title: 'LASS — Loom AI Investigation Assistant',
+        subtitle: 'Moniepoint Group · Product Manager',
+        coverFile: 'cover-4.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=LASS+AI+Investigation+Assistant',
+        metricBadge: '+25% Analyst Efficiency · <20s Response',
+        summary: 'Launched LASS, a persistent context-aware AI copilot across Dashboard, Alert, Case Group, and RFI pages to synthesize investigations and cut resolution time.',
+        overview: 'Designed and launched LASS (Loom Assistant AI)—a persistent, draggable, non-obstructive sidebar copilot embedded across Loom Case Management. LASS dynamically detects the analyst’s active workspace context (Dashboard time filters, single Alert Drawer, Many-to-One / One-to-Many Case Group Money-Tree networks, RFI History, and Case Comments) to generate instant investigative summaries and guided prompts.',
+        problem: 'Analysts spent excessive manual effort cross-referencing transaction spikes, historical violation records, PEP/sanctions screening results, device/IP overlaps, and multi-channel RFI threads before drafting risk narratives—leading to high Average Investigation Time (AIT), inconsistent quality across analysts, and steep onboarding curves.',
+        goals: 'Deliver instant page-contextualized investigative summaries in under 20 seconds, provide one-click Pre-defined, Suggested, and Free-Text prompts tailored to each screen, maintain alert-scoped session memory with New Chat and Prompt History controls, and reduce case Resolution Time (RST) by 20%+.',
+        impact: 'Boosted analyst investigation efficiency by 25%, automated initial alert and MTO/OTM network narrative drafting, eliminated repetitive query friction through persistent session memory, and established thumbs-up/down RLHF quality telemetry.',
+        roadmap: 'Phase 1: Context-aware summarization engine across Dashboard, Alert Drawer, and Case Group Detail pages → Phase 2: Dynamic context-specific Pre-defined/Suggested prompts, alert-scoped sessioning, copy formatting preservation, and <20s latency optimization → Phase 3: Full KYC/Account/Transaction History ingestion, thumbs-down structured feedback capture, and Nigerian language (Yoruba, Igbo, Hausa) RFI intelligence.',
+        conclusion: 'Usability testing with frontline analysts proved that making LASS an on-demand, context-aware sidebar rather than an auto-launching modal prevents token waste while keeping investigators in full control of their workflow.'
+      },
+      {
+        id: 'customer-screening',
+        category: 'fintech',
+        categoryLabel: 'Fintech & Risk',
+        title: 'Customer Screening',
+        subtitle: 'Moniepoint Group · Product Manager',
+        coverFile: 'cover-5.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=Customer+Screening+System',
+        metricBadge: '<2s Screening · 99.5% Compliance',
+        summary: 'Built real-time onboarding pre-screening and automated monthly continuous screening against global sanctions, PEP lists, blacklists, and watchlists.',
+        overview: 'Owned the Loom Customer Screening platform responsible for screening personal banking customers, registered businesses, and corporate directors against global sanctions lists, Politically Exposed Persons (PEP) databases, internal blacklists, and watchlists—both at onboarding (Pre-Screening) and via automated monthly batch re-screening (Continuous Screening).',
+        problem: 'Minor name spelling variations caused excessive false-positive onboarding holds, while static one-time checks at signup left the institution exposed if an existing customer or business director was later added to a sanctions or PEP list—requiring automated governance callbacks to Core Banking.',
+        goals: 'Deliver sub-2-second pre-screening decisions (Permitted_Now, Banned, Subject_to_Review) at up to 10,000 concurrent requests, automate monthly continuous re-screening across active accounts, allow admins to tune similarity thresholds with full audit logs, and trigger immediate Core Banking deactivation for Banned entities.',
+        impact: 'Reduced false-positive screening alerts by 20%, accelerated initial compliance review turnaround time by 70%, decreased onboarding financial crime exposure by 80%, and maintained 99.5% regulatory compliance at 99.9% system availability.',
+        roadmap: 'Phase 1: Real-time Onboarding Pre-Screening API for individual BVN/NIN and registered business/director checks → Phase 2: Admin Repository Maintenance UI with CRUD controls, configurable similarity thresholds, and audit trails → Phase 3: Automated Monthly Continuous Re-Screening batch engine, Case Management Subject_to_Review routing, and Core Banking Governance deactivation callbacks.',
+        conclusion: 'Pairing real-time onboarding pre-screening with automated monthly re-screening and tunable similarity thresholds closes regulatory blind spots without bottlenecking legitimate customer acquisition.'
+      },
+      {
+        id: 'heilen-wellness',
+        category: 'venture',
+        categoryLabel: 'Wellness Platform · Zarttech',
+        title: 'Heilen — Holistic & Spiritual Wellness Marketplace',
+        subtitle: 'Zarttech · Product Designer & Management (heilen.io)',
+        coverFile: 'cover-6.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=Heilen+Wellness+Platform',
+        metricBadge: '+20% Task Completion',
+        summary: 'Designed end-to-end practitioner discovery, session booking, and community flows for holistic wellness seekers.',
+        overview: 'Heilen (heilen.io) is a digital holistic and spiritual wellness marketplace connecting individuals seeking emotional, physical, and spiritual support with vetted practitioners across Reiki, psychotherapy, breathwork, mindfulness, and life coaching.',
+        problem: 'Wellness seekers struggled to evaluate practitioner credentials, compare modalities, and book sessions seamlessly across fragmented social channels, while practitioners lacked dedicated availability management, client intake, and community engagement tools.',
+        goals: 'Design a calm, high-trust discovery-to-booking journey with transparent practitioner profiles, structured session scheduling, and supportive community spaces validated through iterative user research.',
+        impact: 'Increased end-to-end user task completion rates by 20% in moderated usability testing and reduced post-launch UI defects by 15% through discovery research and prototyping with 50+ participants.',
+        roadmap: 'Phase 1: Qualitative user interviews & practitioner-seeker journey mapping → Phase 2: Interactive Figma wireframes, booking flow prototypes & usability testing → Phase 3: Design system documentation, developer specs & agile sprint handoff.',
+        conclusion: 'Designing for personal wellness requires stripping away booking friction and foregrounding practitioner credibility, clear modality explanations, and calm visual hierarchy.'
+      },
+      {
+        id: '15wins-venture',
+        category: 'venture',
+        categoryLabel: 'Venture Ecosystem · Zarttech',
+        title: '15Wins Venture — Pan-African Tech & Venture Platform',
+        subtitle: 'Zarttech · Product Designer & Management (15wins.com)',
+        coverFile: 'cover-7.jpg',
+        fallbackImg: 'https://placehold.co/800x480/171A21/F27043?text=15Wins+Venture+Platform',
+        metricBadge: 'Europe ↔ Africa Venture Bridge',
+        summary: 'Crafted the digital product experience bridging African tech startups across FinTech, AI, and SaaS with European investors.',
+        overview: '15Wins Venture (15wins.com) amplifies high-potential African technology startups across FinTech, HRTech, EdTech, SaaS, AI, and Blockchain—creating a structured digital bridge connecting African founders with European capital, strategic partners, and global markets.',
+        problem: 'Founders and international investors lacked a unified, authoritative digital platform to navigate 15Wins Venture’s multi-sector investment thesis, evaluate portfolio traction, and initiate structured partnership or pitch workflows.',
+        goals: 'Translate 15Wins Venture’s cross-continental positioning into a crisp, responsive web experience with intuitive sector navigation, portfolio storytelling, and streamlined founder/investor intake flows.',
+        impact: 'Delivered componentized design systems and 20+ technical specifications for an 8–10 person engineering squad, cutting team onboarding time by 30% and maintaining 100% agile sprint adherence.',
+        roadmap: 'Phase 1: Executive stakeholder discovery & multi-sector information architecture → Phase 2: High-contrast responsive UI design, interactive prototypes & intake workflows → Phase 3: Cross-functional QA verification & production launch.',
+        conclusion: 'Clear narrative hierarchy and structured founder intake pathways enable venture platforms to build immediate institutional credibility across international markets.'
+      }
+    ];
+
+    // 2. Render Project Cards
+    const projectsGrid = document.getElementById('projectsGrid');
+
+    function renderProjects(filter = 'all') {
+      const filtered = filter === 'all'
+        ? caseStudies
+        : caseStudies.filter(item => item.category === filter);
+
+      projectsGrid.innerHTML = filtered.map((project) => `
+        <article class="interactive-card rounded-3xl bg-slateCard border border-white/10 flex flex-col justify-between overflow-hidden group">
+          <div>
+            <!-- Cover Image Container -->
+            <div class="relative aspect-[16/10] bg-black/40 overflow-hidden">
+              <img
+                id="coverImg-${project.id}"
+                src="${project.coverFile}"
+                onerror="this.onerror=null;this.src='${project.fallbackImg}';"
+                alt="${project.title}"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+
+              <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md text-[11px] font-extrabold text-terracotta border border-white/10">
+                ${project.metricBadge}
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6 pb-4">
+              <p class="text-[11px] font-extrabold uppercase tracking-wider text-gray-400 mb-2">${project.categoryLabel}</p>
+              <h3 class="font-display font-extrabold text-xl text-white leading-tight group-hover:text-terracotta transition-colors">
+                ${project.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-400 mt-3 leading-relaxed">
+                ${project.summary}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2">
+            <button onclick="openCaseStudy('${project.id}')" class="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-terracotta text-white text-xs font-extrabold flex items-center justify-between transition-colors">
+              <span>See Detailed Case Study</span>
+              <span>→</span>
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      attachCardSpotlights();
+    }
+
+    // Category Filter Listeners
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-terracotta', 'text-white');
+          b.classList.add('bg-white/10', 'text-gray-300');
+        });
+        btn.classList.remove('bg-white/10', 'text-gray-300');
+        btn.classList.add('bg-terracotta', 'text-white');
+        renderProjects(btn.dataset.filter);
+      });
+    });
+
+    // 3. Clickable Other Experience Roles Dataset (Updated with Remote & GTCO Apr 2022 – May 2023)
+    const otherExperiences = [
+      {
+        id: 'exp-zarttech',
+        period: 'Feb 2023 – Oct 2024',
+        role: 'Product Designer & Management',
+        company: 'Zarttech · Internship / Contract · Remote',
+        summary: 'Designed and shipped user flows, prototypes, and technical specs across consumer wellness and venture platforms.',
+        metric: '+20% Task Completion · -15% Bugs',
+        bullets: [
+          'Collaborated remotely with cross-functional teams to build UI mockups and interactive prototypes for Heilen (heilen.io) and 15Wins Venture (15wins.com), increasing user task completion rates by 20%.',
+          'Directed discovery research with 50+ users via surveys and interviews to inform product development, resulting in a 15% drop in post-launch bugs.',
+          'Supported product delivery by facilitating Scrum meetings and organizing sprint planning sessions for a team of 8–10 people, ensuring 100% adherence to agile methodologies.',
+          'Authored and maintained 20+ user guides and technical specs, cutting team onboarding time by 30%.'
+        ]
+      },
+      {
+        id: 'exp-nomba',
+        period: 'Dec 2023 – May 2024',
+        role: 'Customer Success Associate',
+        company: 'Nomba · Full-time',
+        summary: 'Managed SME merchant onboarding, payment terminal resolution, and frontline product feedback loops.',
+        metric: '95% SLA Issue Resolution',
+        bullets: [
+          'Managed merchant onboarding, POS/payment terminal issue resolution, and account retention for 200+ active SMEs across Nigeria.',
+          'Maintained a 95% issue resolution rate within SLA targets while resolving settlement and transaction inquiries.',
+          'Synthesized recurring merchant friction points into actionable feedback loops for product and engineering teams.'
+        ]
+      },
+      {
+        id: 'exp-sidehustle',
+        period: 'Nov 2022 – Feb 2024',
+        role: 'Asst. Product Design Instructor',
+        company: 'Side Hustle · Internship / Contract · Remote',
+        summary: 'Co-facilitated remote UX/UI design curriculum, wireframing workshops, and portfolio critiques across 3 cohorts.',
+        metric: '95% Cohort Comprehension',
+        bullets: [
+          'Assisted the lead instructor remotely in teaching product design principles and techniques to over 50 students per cohort across 3 cohorts (150+ learners).',
+          'Guided students through hands-on capstone projects, ensuring a 95% comprehension rate of key UX/UI concepts.',
+          'Provided timely, structured design critiques on student deliverables, driving a 20% average improvement in final project outcomes.',
+          'Developed and updated 10+ modules of curriculum materials to keep training aligned with modern industry tooling.'
+        ]
+      },
+      {
+        id: 'exp-octosoft',
+        period: 'May 2023 – Dec 2023',
+        role: 'Growth Executive',
+        company: 'Octosoft Technologies Ltd · HealthTech · Full-time',
+        summary: 'Marketed and sold health-tech software solutions to clinics and hospitals while driving client onboarding.',
+        metric: '+25% HealthTech Sales Pipeline',
+        bullets: [
+          'Marketed and sold digital health-tech solutions directly to hospitals, clinics, and diagnostic centers, growing the qualified B2B sales pipeline by 25%.',
+          'Conducted tailored product demos and commercial pitches to medical directors and administrators, converting prospects into active software subscribers.',
+          'Partnered with product and onboarding teams to relay frontline healthcare provider feedback into product improvements and smoother clinic adoption.'
+        ]
+      },
+      {
+        id: 'exp-gtco',
+        period: 'Apr 2022 – May 2023',
+        role: 'Customer Service Representative',
+        company: 'Guaranty Trust (GTCO) · Full-time',
+        summary: 'Resolved retail and commercial banking inquiries, account restrictions, and transaction disputes.',
+        metric: '98% First-Contact Accuracy',
+        bullets: [
+          'Resolved an average of 45+ daily retail and commercial banking inquiries, account access escalations, and transaction disputes.',
+          'Maintained a 98% first-contact compliance and accuracy rating under strict Nigerian banking regulatory guidelines.',
+          'Built foundational domain expertise in core banking operations, account holds, and customer trust management.'
+        ]
+      }
+    ];
+
+    const otherExperienceGrid = document.getElementById('otherExperienceGrid');
+    otherExperienceGrid.innerHTML = otherExperiences.map(exp => `
+      <div onclick="openExperienceModal('${exp.id}')" class="interactive-card surface-card cursor-pointer p-6 rounded-3xl border border-adaptive flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-extrabold text-terracotta">${exp.period}</span>
+            <span class="px-2.5 py-1 rounded-full text-[11px] font-bold surface-secondary border border-adaptive">${exp.metric}</span>
+          </div>
+          <h4 class="font-display font-extrabold text-lg group-hover:text-terracotta transition-colors">${exp.role}</h4>
+          <p class="text-xs font-bold text-adaptive-muted mt-0.5">${exp.company}</p>
+          <p class="text-xs sm:text-sm text-adaptive-muted mt-3 leading-relaxed">${exp.summary}</p>
+        </div>
+        <div class="mt-5 pt-4 border-t border-adaptive flex items-center justify-between text-xs font-extrabold text-terracotta">
+          <span>See More</span>
+          <span class="transition-transform group-hover:translate-x-1">→</span>
+        </div>
+      </div>
+    `).join('');
+
+    // 4. Case Study Modal Logic
+    const caseStudyModal = document.getElementById('caseStudyModal');
+
+    window.openCaseStudy = function(projectId) {
+      const project = caseStudies.find(p => p.id === projectId);
+      if (!project) return;
+
+      document.getElementById('modalCategoryTag').textContent = project.categoryLabel;
+      document.getElementById('modalTitle').textContent = project.title;
+      document.getElementById('modalSubtitle').textContent = project.subtitle;
+
+      const modalImg = document.getElementById('modalCoverImg');
+      modalImg.src = project.coverFile;
+      modalImg.onerror = function() {
+        this.onerror = null;
+        this.src = project.fallbackImg;
+      };
+
+      document.getElementById('modalOverview').textContent = project.overview;
+      document.getElementById('modalProblem').textContent = project.problem;
+      document.getElementById('modalGoals').textContent = project.goals;
+      document.getElementById('modalImpact').textContent = project.impact;
+      document.getElementById('modalRoadmap').textContent = project.roadmap;
+      document.getElementById('modalConclusion').textContent = project.conclusion;
+
+      caseStudyModal.classList.remove('hidden');
+      caseStudyModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    function closeCaseStudy() {
+      caseStudyModal.classList.add('hidden');
+      caseStudyModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('closeCaseStudyModal').addEventListener('click', closeCaseStudy);
+    caseStudyModal.addEventListener('click', (e) => {
+      if (e.target === caseStudyModal) closeCaseStudy();
+    });
+
+    // 5. Experience Modal Logic
+    const experienceModal = document.getElementById('experienceModal');
+
+    window.openExperienceModal = function(expId) {
+      const exp = otherExperiences.find(item => item.id === expId);
+      if (!exp) return;
+
+      document.getElementById('expModalPeriod').textContent = exp.period;
+      document.getElementById('expModalRole').textContent = exp.role;
+      document.getElementById('expModalCompany').textContent = exp.company;
+      document.getElementById('expModalMetric').textContent = exp.metric;
+      document.getElementById('expModalBullets').innerHTML = exp.bullets
+        .map(b => `<li>${b}</li>`)
+        .join('');
+
+      experienceModal.classList.remove('hidden');
+      experienceModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    function closeExperience() {
+      experienceModal.classList.add('hidden');
+      experienceModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('closeExperienceModal').addEventListener('click', closeExperience);
+    experienceModal.addEventListener('click', (e) => {
+      if (e.target === experienceModal) closeExperience();
+    });
+
+    // Escape Key Closes Open Modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCaseStudy();
+        closeExperience();
+      }
+    });
+
+    // 6. Persistent Light / Dark Mode Toggle
+    const htmlEl = document.documentElement;
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        htmlEl.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    // Initialize saved theme or default to editorial light mode
+    const savedTheme = localStorage.getItem('shedrack-portfolio-theme');
+    applyTheme(savedTheme === 'dark');
+
+    document.getElementById('themeToggleBtn').addEventListener('click', () => {
+      const willBeDark = !htmlEl.classList.contains('dark');
+      applyTheme(willBeDark);
+      localStorage.setItem('shedrack-portfolio-theme', willBeDark ? 'dark' : 'light');
+    });
+
+    // 8. Scroll Progress Bar & Moniepoint Timeline Illumination
+    const scrollProgressBar = document.getElementById('scrollProgressBar');
+    const timelineEl = document.getElementById('moniepointTimeline');
+    const timelineFill = document.getElementById('timelineProgressFill');
+    const timelineSteps = document.querySelectorAll('.timeline-step');
+
+    function updateScrollEffects() {
+      // Top reading progress bar
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgressBar.style.width = `${scrollPercent}%`;
+
+      // Timeline vertical line & node activation
+      if (timelineEl && timelineFill) {
+        const rect = timelineEl.getBoundingClientRect();
+        const triggerPoint = window.innerHeight * 0.65;
+        const progress = Math.min(Math.max((triggerPoint - rect.top) / rect.height, 0), 1);
+        timelineFill.style.height = `${progress * 100}%`;
+
+        timelineSteps.forEach(step => {
+          const stepRect = step.getBoundingClientRect();
+          if (stepRect.top < window.innerHeight * 0.72) {
+            step.classList.add('is-active');
+          } else {
+            step.classList.remove('is-active');
+          }
+        });
+      }
+    }
+
+    window.addEventListener('scroll', updateScrollEffects, { passive: true });
+    window.addEventListener('resize', updateScrollEffects);
+
+    // 9. Scroll-Reveal IntersectionObserver
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+    // 10. Cursor-Reactive Spotlight on Interactive Cards
+    function attachCardSpotlights() {
+      document.querySelectorAll('.interactive-card').forEach(card => {
+        card.onmousemove = (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        };
+      });
+    }
+
+    // 11. Copy Email to Clipboard (Privacy-Clean: No Raw Email Text Shown)
+    document.getElementById('copyEmailBtn').addEventListener('click', function() {
+      const email = 'ananwudeshedrack@gmail.com';
+      const tempInput = document.createElement('textarea');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        document.getElementById('copyEmailLabel').textContent = 'Email Copied!';
+        showToast('Email copied to clipboard');
+        setTimeout(() => {
+          document.getElementById('copyEmailLabel').textContent = 'Copy Email';
+        }, 3000);
+      } catch (err) {
+        showToast('Unable to copy email');
+      }
+      document.body.removeChild(tempInput);
+    });
+
+    // 12. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // 13. Toast Helper
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      toast.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2800);
+    }
+
+    // Initialize on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects('all');
+      attachCardSpotlights();
+      updateScrollEffects();
+    });
+  </script>
+</body>
+</html>
